@@ -6,6 +6,15 @@ document.getElementById('btn-withdraw').addEventListener('click', function(){
     const withdrawField = document.getElementById('input-withdraw');
     const newWithdrawAmountString = withdrawField.value;
     const newWithdrawAmount = parseFloat(newWithdrawAmountString);
+    console.log(newWithdrawAmount);
+
+// step 7: clear the withdraw field
+withdrawField.value = '';
+
+    if(isNaN(newWithdrawAmount)){
+        alert('please provide a valid number');
+        return;
+    }
 
 // step 3: get the current withdraw total
 // for non-input(element other than input, textarea) use innerText to get the text
@@ -22,9 +31,6 @@ document.getElementById('btn-withdraw').addEventListener('click', function(){
     const balanceTotalElement = document.getElementById('balance-total');
     const previousBalanceTotalString = balanceTotalElement.innerText;
     const previousBalanceTotal = parseFloat(previousBalanceTotalString);
-
-// step 7: clear the withdraw field
-    withdrawField.value = '';
 
     if(newWithdrawAmount > previousBalanceTotal){
         alert('insufficient balance');
